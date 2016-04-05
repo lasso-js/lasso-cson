@@ -1,0 +1,37 @@
+{
+  "name": "lasso-cson",
+  "description": "Lasso.js plugin to support sending down CSON as a JavaScript object",
+  "keywords": [
+    "lasso",
+    "lasso-cson",
+    "cson"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lasso-js/lasso-cson.git"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --ui bdd --reporter spec ./test"
+  },
+  "author": "Patrick Steele-Idem <pnidem@gmail.com>",
+  "contributors": [
+    "Patrick Steele-Idem <pnidem@gmail.com>",
+    "Phillip Gates-Idem <phillip.idem@gmail.com>"
+  ],
+  "maintainers": "Patrick Steele-Idem <pnidem@gmail.com>",
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "lasso": "^2.0.0"
+  },
+  "peerDependencies": {},
+  "license": "MIT",
+  "bin": {},
+  "main": "./indx.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "season": "^5.3.0"
+  }
+}
