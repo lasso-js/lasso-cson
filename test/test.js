@@ -13,14 +13,14 @@ describe('lasso-CSON' , function() {
 
     beforeEach(function(done) {
         for (var k in require.cache) {
-            if (require.cache.hasOwnProperty(k)) {
+            if (require.cache[k]) {
                 delete require.cache[k];
             }
         }
         done();
     });
 
-    it('should render a simple CSON dependency that uses require', function(done) {
+    it('should render a simple CSON dependency that uses require', function() {
 
         var myLasso = lasso.create({
                 fingerprintsEnabled: false,
@@ -42,23 +42,18 @@ describe('lasso-CSON' , function() {
                 ]
             });
 
-        myLasso.lassoPage({
+        return myLasso.lassoPage({
                 name: 'testPage',
                 dependencies: [
                     'require: ./test.cson'
                 ],
                 from: nodePath.join(__dirname, 'fixtures/project1')
-            },
-            function(err, lassoPageResult) {
-                if (err) {
-                    return done(err);
-                }
-
+            }).then((lassoPageResult) => {
                 var output = fs.readFileSync(nodePath.join(__dirname, 'static/testPage.js'), {encoding: 'utf8'});
                 expect(output).to.contain("test.cson");
                 expect(output).to.contain('".text.html.marko"');
 
-                lasso.flushAllCaches(done);
+                return lasso.flushAllCaches();
             });
     });
 
